@@ -16,8 +16,9 @@ if(argv && argv.file) {
 		if(exists) {
 			fs.readFile(fullPath, function(err, contents) {
 				if(err) throw err;
-				var jsCode = contents.toString();
-				console.log(jsCode);
+				var jsCode = contents.toString(),
+					parsedCode = esprima.parse(jsCode);
+				console.dir(JSON.stringify(parsedCode));
 			});
 		}
 	});
