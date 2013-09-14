@@ -1,7 +1,7 @@
 {
-	"modules": [
-		"SWP"
-	],
-	"anonymous_functions": false,
-	"global": false
+    "modules": [
+        "SWP"
+    ],
+    "anonymous_functions": false,
+    "global": false
 }
