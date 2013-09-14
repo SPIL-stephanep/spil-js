@@ -3,6 +3,7 @@
 var fs = require('fs'),
     path = require('path'),
     esprima = require('esprima'),
+    estraverse = require('estraverse'),
     argv = require('attrs.argv'),
     nconf = require('nconf'),
     analyzer = require('../lib/analyzer'),
@@ -17,8 +18,14 @@ if(argv && argv.file) {
             fs.readFile(fullPath, function(err, contents) {
                 if(err) throw err;
                 var jsCode = contents.toString(),
-                    parsedCode = esprima.parse(jsCode);
-                console.dir(JSON.stringify(parsedCode));
+                    ast = esprima.parse(jsCode);
+                
+                estraverse.traverse(ast, {
+                    enter: function(node, parent) {
+                        console.log(node, parent);
+                        console.log('-------------');
+                    }
+                });
             });
         }
     });
