@@ -1,0 +1,21 @@
+{
+  "name": "js-analyzer",
+  "version": "0.1.0",
+  "author": "Stephane P. Pericat <stephane.pericat@spilgames.com>",
+  "description": "parse an analyze javascript modules",
+  "private": true,
+  "analyze": false,
+  "preferGlobal": true,
+  "scripts": {
+    "test": "vows --specs -v"
+  },
+  "bin": "./bin/js-analyzer",
+  "dependencies": {
+    "esprima": "~1.0.4",
+    "nconf": "~0.6.7",
+    "attrs.argv": "~0.1.7"
+  },
+  "devDependencies": {
+    "vows": "~0.7.0"
+  }
+}

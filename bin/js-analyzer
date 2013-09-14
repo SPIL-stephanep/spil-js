@@ -1,0 +1,24 @@
+#! /usr/bin/env node
+
+var fs = require('fs'),
+	path = require('path'),
+	esprima = require('esprima'),
+	argv = require('attrs.argv'),
+	nconf = require('nconf'),
+	analyzer = require('../lib/analyzer'),
+	validationConfig = nconf.use('file', {file: './validation-rules.json'});
+
+if(argv && argv.file) {
+	var file = argv.file,
+		fullPath = path.resolve(process.cwd(), file);
+
+	fs.exists(fullPath, function(exists) {
+		if(exists) {
+			fs.readFile(fullPath, function(err, contents) {
+				if(err) throw err;
+				var jsCode = contents.toString();
+				console.log(jsCode);
+			});
+		}
+	});
+}

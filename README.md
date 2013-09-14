@@ -1,4 +1,3 @@
-js-analyzer
-===========
+#js-analyzer#
 
-parse and validates js modules
+parse and validate js modules.
