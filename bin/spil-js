@@ -6,7 +6,7 @@ var fs = require('fs'),
     estraverse = require('estraverse'),
     argv = require('attrs.argv'),
     nconf = require('nconf'),
-    analyzer = require('../lib/analyzer'),
+    analyzer = require('../lib/spil'),
     validationConfig = nconf.use('file', {file: './validation-rules.json'});
 
 if(argv && argv.file) {
@@ -18,12 +18,16 @@ if(argv && argv.file) {
             fs.readFile(fullPath, function(err, contents) {
                 if(err) throw err;
                 var jsCode = contents.toString(),
-                    ast = esprima.parse(jsCode);
-                
+                    ast = esprima.parse(jsCode),
+                    i = 0;
+                    
                 estraverse.traverse(ast, {
                     enter: function(node, parent) {
-                        console.log(node, parent);
-                        console.log('-------------');
+                        if(i < 10) {
+                            console.log(node);
+                            console.log('-------------');
+                            i++;
+                        }
                     }
                 });
             });

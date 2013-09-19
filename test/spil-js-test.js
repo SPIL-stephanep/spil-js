@@ -1,11 +1,11 @@
 var vows = require('vows'),
     assert = require('assert'),
-    analyzer = require('../lib/analyzer');
+    analyzer = require('../lib/spil');
 
 vows
-    .describe('js-analyzer')
+    .describe('spil-js')
     .addBatch({
-        'the js-analyzer module' : {
+        'the spil-js module' : {
             topic: analyzer,
             'is an object': function(a) {
                 assert.isObject(a);

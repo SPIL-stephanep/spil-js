@@ -1,3 +1,3 @@
-#js-analyzer#
+#spil-js#
 
-parse and validate js modules.
+parse and validate spiljs modules.
